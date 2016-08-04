@@ -29,10 +29,16 @@ def retrieveWords() :
     return words
 
 def printCorrectSoFar(arr) :
-    print("Word so far: ", end="")
+    print("Word: ", end="")
     #loop through the array and print each character followed by a space
     for i in range(len(secretWord)) :
-        print(secretWord[i] + " ")
+        if (arr == secretWord[i]) :
+            print(arr, " ", end="")
+        else:
+            print("_ ", end="")
+        #hiddenWord = '_ ' * len(secretWord)
+        #print(hiddenWord, " ", end="")
+
 
 
 def updateCorrectGuesses(arr, secretWord, letter) :
@@ -73,9 +79,12 @@ if __name__ == "__main__" :
 
     print("The length of the secret word: " + str(len(secretWord)))
     print()
-    print("You have " + str(allowedIncorrect) + " incorrect guesses.\n")
+    print("You have " + str(allowedIncorrect) + " incorrect guesses.\n\n")
 
     while (incorrect < allowedIncorrect):
+        printCorrectSoFar(secretWord)
+        print()
+        print()
         letter = input("Enter a letter: ").lower()
         guessedLetters += letter
 
